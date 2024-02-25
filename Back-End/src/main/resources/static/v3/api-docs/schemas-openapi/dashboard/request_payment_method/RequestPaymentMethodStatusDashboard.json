@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "idRequestPaymentMethodStatus": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "userReceivedPaymentMethodDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "bankRequestPaymentMethodDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "bankReceivedPaymentMethodDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "orderStatus": {
+      "type": "string"
+    },
+    "userRequestPaymentMethodDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["idRequestPaymentMethodStatus", "userReceivedPaymentMethodDate", "bankRequestPaymentMethodDate", "bankReceivedPaymentMethodDate", "orderStatus", "userRequestPaymentMethodDate"]
+}

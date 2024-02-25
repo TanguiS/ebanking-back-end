@@ -1,0 +1,18 @@
+<form [formGroup]="beneficiaryForm" (ngSubmit)="onSubmit()">
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <mat-form-field appearance="fill">
+            <mat-label> First Name </mat-label>
+            <input matInput placeholder="Please enter beneficiary's first name" formControlName="firstName">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label> Last Name </mat-label>
+            <input matInput placeholder="Please enter beneficiary's last name" formControlName="lastName">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label> IBAN </mat-label>
+            <input matInput placeholder="Please enter beneficiary's IBAN" formControlName="IBAN">
+        </mat-form-field>
+    </div>
+</form>

@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "idPaymentMethodManager": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "card": {
+      "$ref": "./CardDashboard.json"
+    }
+  },
+  "required": ["idPaymentMethodManager", "card"]
+}

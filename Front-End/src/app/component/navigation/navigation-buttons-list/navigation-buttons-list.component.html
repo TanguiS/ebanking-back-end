@@ -1,0 +1,14 @@
+<a *ngIf="this.handlerButtonService.ShouldDisplayButton(ButtonType.HOME)" mat-button routerLink="{{ Path.HOME }}" [ngClass]="{'active': isCurrentPage(Path.HOME)}">Home</a>
+<a *ngIf="this.handlerButtonService.ShouldDisplayButton(ButtonType.DASHBOARD)" mat-button routerLink="{{this.cookieTool.getRole() + '/' + Path.DASHBOARD}}" [ngClass]="{'active': isCurrentPage(Path.DASHBOARD) || isCurrentPage(Path.DETAILED_ACCOUNT)}">DashBoard</a>
+<a *ngIf="this.handlerButtonService.ShouldDisplayButton(ButtonType.SIMULATOR)" mat-button routerLink="{{Path.SIMULATOR}}" [ngClass]="{'active': isCurrentPage(Path.SIMULATOR)}">Simulator</a>
+<a mat-raised-button routerLink="{{Path.LOGIN}}" color="accent"
+   [ngClass]="{'active': isCurrentPage(Path.LOGIN)}"
+   *ngIf="!isUserLoggedIn()">Log In</a>
+<a mat-raised-button routerLink="{{Path.REGISTER}}" color="accent"
+   [ngClass]="{'active': isCurrentPage(Path.REGISTER)}"
+   *ngIf="!isUserLoggedIn()">Sign Up</a>
+<a mat-raised-button
+   routerLink="{{ Path.HOME }}"
+   color="accent"
+   (click)="logOutUser()"
+   *ngIf="isUserLoggedIn()">Log out</a>

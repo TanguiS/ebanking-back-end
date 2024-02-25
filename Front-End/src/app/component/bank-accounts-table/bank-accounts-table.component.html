@@ -1,0 +1,27 @@
+<app-page-title [isMainComponent]="this.isMainComponent" [title]="title"></app-page-title>
+
+<mat-table [dataSource]="accounts" class="mat-elevation-z8">
+    <ng-container matColumnDef="IBAN">
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.iban}} </mat-cell>
+        <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="accountType">
+        <mat-header-cell *matHeaderCellDef> Account </mat-header-cell>
+        <mat-cell *matCellDef="let element" style="font-style: italic"> {{element.bankAccountType}} </mat-cell>
+        <mat-footer-cell mat-footer-cell *matFooterCellDef> <b>Total</b> </mat-footer-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.amount/100 |
+            currency:"EUR":"symbol":this.amountFormat }} </mat-cell>
+        <mat-footer-cell *matFooterCellDef> <b>{{ this.getTotalAmount()/100 |
+            currency:"EUR":"symbol":this.amountFormat }}</b> </mat-footer-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row matRipple id="account-table-row" *matRowDef="let row; columns: displayedColumns;" (click)="navigateToDetailedBankAccount(row.idBankAccount)"></mat-row>
+    <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+</mat-table>

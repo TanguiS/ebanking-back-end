@@ -1,0 +1,96 @@
+<h1 class="form-title">{{ title }}</h1>
+
+<section>
+
+    <div id="global-message-container" class="form-element-container form-element-container-ok">
+        <p id="global-message" class="hidden-message global-success">
+            {{ globalMessage }}
+        </p>
+    </div>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+
+        <fieldset>
+            <legend>Please enter your name:</legend>
+            <div class="name">
+                <div id="first-name-division">
+                    <div id="first-name-container" class="form-element-container form-element-container-ok">
+                        <input (input)="hideGlobalMessage()" type="text" placeholder="First name" formControlName="_firstName">
+                    </div>
+                    <div id="first-name-error-container" class="form-element-container error-message-container hidden-message">
+                        <p id="first-name-error" class="error">First name is missing</p>
+                    </div>
+                </div>
+
+                <div id="last-name-division">
+                    <div id="last-name-container" class="form-element-container form-element-container-ok">
+                        <input (input)="hideGlobalMessage()" type="text" placeholder="Last name" formControlName="_lastName">
+                    </div>
+                    <div id="last-name-error-container" class="form-element-container error-message-container hidden-message">
+                        <p id="last-name-error" class="error">Last name is missing</p>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Please select your gender:</legend>
+            <div id="gender-container" class="form-element-container form-element-container-ok">
+                <select (change)="hideGlobalMessage()" id="gender-select" formControlName="_gender">
+                    <option value=-1>-- Select your gender --</option>
+                    <option value=1>Male</option>
+                    <option value=2>Female</option>
+                    <option value=0>Other</option>
+                </select>
+            </div>
+            <div id="gender-error-container" class="form-element-container error-message-container hidden-message">
+                <p id="gender-error" class="error">Please select your gender</p>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Please enter your information:</legend>
+            <div class="information">
+                <div id="phoneNumber-container" class="form-element-container form-element-container-ok">
+                    <input (input)="hideGlobalMessage()" id="phoneNumber-input" type="tel" placeholder="Phone number" formControlName="_phoneNumber">
+                </div>
+                <div id="phoneNumber-missing-container" class="form-element-container error-message-container hidden-message">
+                    <p id="phoneNumber-missing" class="error">{{ phoneNumberMessage }}</p>
+                </div>
+
+                <div id="email-container" class="form-element-container form-element-container-ok">
+                    <input (input)="hideGlobalMessage()" id="email-input" type="email" placeholder="Email address" formControlName="_email">
+                </div>
+                <div id="email-missing-container" class="form-element-container error-message-container hidden-message">
+                    <p id="email-missing" class="error">An email address is required</p>
+                </div>
+
+                <div id="email-again-container" class="form-element-container form-element-container-ok">
+                    <input (input)="hideGlobalMessage()" type="email" placeholder="Confirm email address" formControlName="_emailAgain">
+                </div>
+                <div id="email-again-error-container" class="form-element-container error-message-container hidden-message">
+                    <p id="email-again-error" class="error">Please confirm your email address</p>
+                </div>
+
+                <div id="password-container" class="form-element-container form-element-container-ok">
+                    <input mat-raised-button
+                           matTooltip="{{ passwordFormatDescription }}" (input)="hideGlobalMessage()" type="password" id="password-input" placeholder="Password" formControlName="_password">
+                </div>
+                <div id="password-error-container" class="form-element-container error-message-container hidden-message">
+                    <p id="password-error" class="error">{{ passwordMessage }}</p>
+                </div>
+
+                <div id="password-again-container" class="form-element-container form-element-container-ok">
+                    <input (input)="hideGlobalMessage()" type="password" id="passwordAgain" placeholder="Confirm password" formControlName="_passwordAgain">
+                </div>
+                <div id="password-again-error-container" class="form-element-container error-message-container hidden-message">
+                    <p id="password-again-error" class="error">Please confirm your password</p>
+                </div>
+            </div>
+        </fieldset>
+
+        <button id="submit-button" type="submit">Register</button>
+
+    </form>
+
+</section>

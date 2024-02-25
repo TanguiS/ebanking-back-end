@@ -1,0 +1,45 @@
+mat-toolbar {
+    display: flex;
+    flex-direction: column;
+}
+
+mat-toolbar-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.mat-icon {
+    width: 45px;
+    height: 45px;
+}
+
+span {
+    padding-left: 1%;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+#navigation-buttons-container-large {
+    display: flex;
+    gap: 8px;
+}
+
+#navigation-buttons-container-small {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1%;
+}
+
+#navigation-buttons-container-small>* {
+    width: 100%;
+}

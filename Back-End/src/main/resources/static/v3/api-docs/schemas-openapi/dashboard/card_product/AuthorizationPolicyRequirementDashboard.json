@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "lowerConsecutiveOfflineLimit": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "upperConsecutiveOfflineLimit": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "cumulativeTotalTransactionAmountLimit": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "cumulativeTotalTransactionAmountUpperLimit": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "required": [
+    "lowerConsecutiveOfflineLimit",
+    "upperConsecutiveOfflineLimit",
+    "cumulativeTotalTransactionAmountLimit",
+    "cumulativeTotalTransactionAmountUpperLimit"
+  ]
+}

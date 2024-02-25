@@ -1,0 +1,14 @@
+<h1 class="title">{{ title }}</h1>
+
+<span *ngIf="!isUserLoggedIn()">
+    <h1>
+        Welcome to ENSIBANK!
+    </h1>
+</span>
+<span *ngIf="isUserLoggedIn()">
+    <h1>
+        Welcome to ENSIBANK, {{this._firstName}} {{this._lastName}} !
+    </h1>
+</span>
+
+

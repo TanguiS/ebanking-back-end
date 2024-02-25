@@ -1,0 +1,77 @@
+<h1 class="title">{{ title }}</h1>
+
+<section fxLayoutAlign="center center">
+    <mat-stepper orientation="vertical" #stepper>
+        <mat-step [stepControl]="numberOfTransactionsForm">
+            <ng-template matStepLabel> Choose your number of transactions </ng-template>
+            <form [formGroup]="numberOfTransactionsForm" (ngSubmit)="onFormSubmit()">
+                <div id="parameter-buttons" fxLayout="column" fxLayoutAlign="center center">
+                    <mat-form-field>
+                        <mat-label>How many transactions?</mat-label>
+                        <mat-select [(value)]="selectedNumberOfTransactions">
+                            <mat-option *ngFor="let p of numberOfTransactions" [value]="p.value">
+                                {{ p.name }} transactions
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <button mat-button matStepperNext class="parameter-button mat-elevation-z8" type="submit">Start simulation</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel> Run </ng-template>
+            <div fxLayout="column" fxLayoutAlign="center center">
+                <h2> Run the simulation. </h2>
+                <div fxLayoutAlign="center center">
+                    <button mat-button matStepperPrevious> Back </button>
+                    <button mat-button [disabled]="isSimulatorTransactionListEmpty()" (click)="onRun(); stepper.reset()"> Run </button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-stepper>
+</section>
+
+<section>
+    <mat-table [dataSource]="simulatorTransactionsList" class="mat-elevation-z8">
+        <ng-container matColumnDef="accountingDirection">
+            <mat-header-cell *matHeaderCellDef> Accounting Direction </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.accountingDirection }} </mat-cell>
+            <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+            <mat-cell *matCellDef="let element" style="font-style: italic"> {{element.amount}} </mat-cell>
+            <mat-footer-cell mat-footer-cell *matFooterCellDef> <b>Total</b> </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="currency">
+            <mat-header-cell *matHeaderCellDef> Currency </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.currency }} </mat-cell>
+            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="transactionActor">
+            <mat-header-cell *matHeaderCellDef> Transaction Actor </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.transactionActor}} </mat-cell>
+            <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="transactionDate">
+            <mat-header-cell *matHeaderCellDef> Transaction Date </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.transactionDate}} </mat-cell>
+            <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="transactionType">
+            <mat-header-cell *matHeaderCellDef> Transaction Type </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.transactionType}} </mat-cell>
+            <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+    </mat-table>
+</section>

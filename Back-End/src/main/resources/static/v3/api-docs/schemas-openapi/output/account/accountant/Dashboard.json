@@ -1,0 +1,16 @@
+{
+      "type": "object",
+      "properties": {
+        "transactionTuple": {
+          "type": "array",
+          "items": {
+            "$ref": "./TransactionTuple.json"
+          }
+        },
+        "maxPossiblePagesWithCurrentParameters": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": ["transactionTuple", "maxPossiblePagesWithCurrentParameters"]
+}

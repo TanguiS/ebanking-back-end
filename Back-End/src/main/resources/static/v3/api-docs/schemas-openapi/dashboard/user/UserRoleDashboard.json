@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "idRole": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "roleType": {
+      "type": "string"
+    }
+  },
+  "required": ["idRole", "roleType"]
+}

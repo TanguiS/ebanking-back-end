@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "properties": {
+    "idAuthorizationPolicy": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "authorizationType": {
+      "type": "string"
+    },
+    "priorityUseLevel": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "requirement": {
+      "$ref": "./AuthorizationPolicyRequirementDashboard.json"
+    }
+  },
+  "required": ["idAuthorizationPolicy", "authorizationType", "cardProduct", "priorityUseLevel", "requirement"]
+}

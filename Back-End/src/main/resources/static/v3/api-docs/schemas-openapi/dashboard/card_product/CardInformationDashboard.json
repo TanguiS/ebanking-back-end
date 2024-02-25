@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "idCardInformation": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "pan": {
+      "type": "string"
+    },
+    "expirationCardDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "upperLimitPerMonth": {
+      "type": "number",
+      "format": "double"
+    },
+    "upperLimitPerTransaction": {
+      "type": "number",
+      "format": "double"
+    }
+  },
+  "required": ["idCardInformation", "pan", "expirationCardDate", "upperLimitPerMonth", "upperLimitPerTransaction"]
+}

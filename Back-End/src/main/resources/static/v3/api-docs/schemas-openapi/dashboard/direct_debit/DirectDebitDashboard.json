@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "idDirectDebit": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "recurrence": {
+      "type": "string"
+    },
+    "legalEntity": {
+      "$ref": "./LegalEntityDashboard.json"
+    },
+    "individual": {
+      "$ref": "./IndividualDashboard.json"
+    }
+  },
+  "required": ["idDirectDebit", "recurrence", "legalEntity", "individual"]
+}

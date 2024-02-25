@@ -1,0 +1,52 @@
+<app-page-title [isMainComponent]="isMainComponent" [title]="title"></app-page-title>
+
+<mat-accordion class="example-headers-align" multi="">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Clients
+            </mat-panel-title>
+            <mat-panel-description>
+                There is/are {{this.clientDashboards.length}} client(s).
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-table [dataSource]="clientDashboards" class="mat-elevation-z8" #clientsTable>
+            <ng-container matColumnDef="idUser">
+                <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.client.idUser}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.client.firstName}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.client.lastName}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="clientColumns"></mat-header-row>
+            <mat-row matRipple *matRowDef="let row; columns: clientColumns;" (click)="navigateToDetailedClientTable(row.client.idUser)"></mat-row>
+        </mat-table>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Card products
+            </mat-panel-title>
+            <mat-panel-description>
+                There is/are {{this.cardProducts.length}} payment method currently
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <app-card-products-table [isMainComponent]="false" [cardProducts]="cardProducts" #cardProductsTableComponent></app-card-products-table>
+
+    </mat-expansion-panel>
+
+</mat-accordion>

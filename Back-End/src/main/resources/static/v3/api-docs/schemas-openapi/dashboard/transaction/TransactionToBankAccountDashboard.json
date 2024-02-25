@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "idTransactionToBankAccount": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "transaction": {
+      "$ref": "./TransactionDashboard.json"
+    }
+  },
+  "required": ["idTransactionToBankAccount", "transaction"]
+}

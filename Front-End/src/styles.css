@@ -1,0 +1,23 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body { height: 100%; }
+
+:root {
+    --primary-color: #605DC8;
+    --secondary-color: #8B89E6;
+    --accent-color: #e8e7fa;
+    --shadow-color: #E8E8E8;
+    --ensigray: #7B8094;
+    --ensiblue: #588DC8;
+    --ensidarkgray: #44546A;
+    --error_red: #FF0000;
+    --error_lightred: mistyrose;
+    --delete_red: #FF0000;
+    --success_green: #32CD32;
+    --success_lightgreen: #A8FFC1
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+table > thead > tr > th.mat-header-cell.cdk-column-position.mat-column-position {
+    white-space: nowrap;
+}

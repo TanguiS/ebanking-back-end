@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": {
+    "idBeneficiary": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    }
+  },
+  "required": ["idBeneficiary", "firstName", "lastName"]
+}

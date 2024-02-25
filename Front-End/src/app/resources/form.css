@@ -1,0 +1,110 @@
+.form-title {
+    margin-top: 30px;
+    color: var(--ensiblue);
+    text-align: center;
+}
+
+form {
+    width: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: max-content;
+}
+
+fieldset {
+    border-color: var(--ensigray);
+    margin: 10px 0 10px 0;
+    padding-bottom: unset;
+}
+
+#global-message-container {
+    width: 70%;
+    font-size: large;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: max-content;
+}
+
+#global-message {
+    padding: 10px;
+    border-radius: 8px;
+    margin: 4px 0 4px 0;
+    transition: opacity 300ms;
+}
+
+.global-error {
+    border: solid 2px var(--error_red);
+    background-color: var(--error_lightred);
+}
+
+.global-success {
+    border: solid 2px var(--success_green);
+    background-color: var(--success_lightgreen);
+}
+
+.displayed-message {
+    cursor: unset;
+    opacity: 1
+}
+
+.hidden-message {
+    cursor: default;
+    opacity: 0
+}
+
+.form-element-container {
+    border-radius: 8px;
+    transition: background-color 300ms, border 300ms, opacity 300ms;
+}
+
+.form-element-container-ok {
+    background-color: white;
+    border: solid 2px white;
+}
+
+.form-element-container-error {
+    background-color: var(--error_red);
+    border: solid 2px var(--error_red);
+}
+
+.error-message-container {
+    display: inline-flex;
+}
+
+.error {
+    background-color: var(--error_lightred);
+    margin: 0 0 2px 3px;
+    padding: 0 5px 0 5px;
+    border-radius: 0 0 8px 8px;
+}
+
+button {
+    padding: 10px;
+    border: solid 1px var(--ensigray);
+    background: var(--ensidarkgray);
+    color: white;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 4px;
+    transition: color 300ms, background-color 300ms;
+}
+
+button:hover {
+    background-color: white;
+    color: var(--ensidarkgray);
+    cursor: pointer;
+}
+
+.disabled-button {
+    background-color: #7B8094;
+}
+
+
+
+
+
+
+
+

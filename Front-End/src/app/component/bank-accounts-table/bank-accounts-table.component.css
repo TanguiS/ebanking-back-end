@@ -1,0 +1,13 @@
+h1 {
+    text-align: center;
+}
+
+.title {
+    margin-top: 30px;
+    color: var(--ensiblue);
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+    cursor: pointer;
+    opacity: 0.33;
+}

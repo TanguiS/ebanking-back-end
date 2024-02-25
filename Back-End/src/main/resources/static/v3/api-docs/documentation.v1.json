@@ -1,0 +1,739 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Back_End API",
+    "description": "Back_End ebanking - API documentation",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/register": {
+      "post": {
+        "summary": "Request for a registration (need to be validated by the great instance of MASTER)",
+        "operationId": "addClient",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegistrationForm"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login a user in order to have access to specifics services",
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginForm"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas-openapi/dashboard/user/information/UserInformationBasicDashboard.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/banker/dashboard": {
+      "get": {
+        "summary": "Get the banker's Dashboard",
+        "operationId": "getBankerDashboard",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas-openapi/output/account/banker/BankerDashboard.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/banker/block/card/{idClient}/{idCard}": {
+      "patch": {
+        "summary": "Block the card from a specified banker's client with its id",
+        "operationId": "blockClientsCard",
+        "parameters": [
+          {
+            "name": "idClient",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "idCard",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas-openapi/dashboard/request_payment_method/RequestCardBasicDashboard.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/banker/add/bank/account/{idClient}": {
+      "post": {
+        "summary": "Add a bank account from a specified banker's client with its id",
+        "operationId": "addBankAccountToClient",
+        "parameters": [
+          {
+            "name": "idClient",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreFilledBankAccount"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas-openapi/dashboard/account/BankAccountDashboard.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/banker/add/request/card/{idClient}/{idCurrentBankAccount}/{idProductCard}": {
+      "post": {
+        "summary": "Request a new card to a current bank account from a specified banker's client with its id ",
+        "operationId": "addRequestCardToClient",
+        "parameters": [
+          {
+            "name": "idClient",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "idCurrentBankAccount",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "idProductCard",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreFilledCardInformation"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas-openapi/dashboard/request_payment_method/RequestCardBasicDashboard.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accountant/dashboard/{numberOfItemPerPage}/{pageNumber}": {
+      "get": {
+        "summary": "Get the accountant Dashboard",
+        "operationId": "getAccountantDashboard",
+        "parameters": [
+          {
+            "name": "numberOfItemPerPage",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas-openapi/output/account/accountant/Dashboard.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/client/dashboard": {
+      "get": {
+        "summary": "Get the client's Dashboard",
+        "operationId": "getDashboard",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas-openapi/dashboard/account/BankAccountDashboard.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/client/block/card/{idCard}": {
+      "patch": {
+        "summary": "Block the specified card",
+        "operationId": "blockCardById",
+        "parameters": [
+          {
+            "name": "idCard",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas-openapi/dashboard/request_payment_method/RequestCardBasicDashboard.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/client/add/beneficiary/{idCurrentBankAccount}": {
+      "post": {
+        "summary": "Add a beneficiary to the specified current bank account's client",
+        "operationId": "addBeneficiary",
+        "parameters": [
+          {
+            "name": "idCurrentBankAccount",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreFilledBeneficiary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas-openapi/dashboard/beneficiary/BeneficiaryDashboard.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/client/add/request/chequebook/{idCurrentBankAccount}": {
+      "get": {
+        "summary": "Request a cheque book from a specified current bank account",
+        "operationId": "addRequestChequeBook",
+        "parameters": [
+          {
+            "name": "idCurrentBankAccount",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas-openapi/dashboard/request_payment_method/RequestChequeBookDashboard.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/manager/dashboard": {
+      "get": {
+        "summary": "Get the user manager's dashboard",
+        "operationId": "getDashboard",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas-openapi/output/account/user_manager/UserManagerDashboard.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/manager/credential/update/{idUser}": {
+      "patch": {
+        "summary": "Update a specified user's credential (Role, access to API' services)",
+        "operationId": "updateUserCredential",
+        "parameters": [
+          {
+            "name": "idUser",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserCredentialUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas-openapi/dashboard/user/information/UserInformationManagerDashboard.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction/collect": {
+      "post": {
+        "summary": "Collect a batch of transaction into the DB - basic process do not actually internally 'compensate' the transaction",
+        "operationId": "collect",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CollectedTransaction"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "description": "See schemas bellow"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/simulation/transaction/generate/collectable/{numberOfTransactionsToGenerate}": {
+      "get": {
+        "summary": "Generate random (Some have random IBAN/PAN, some use IBAN/PAN from the DB) semi-consistent transactions according to the number to generate. However, their are valid-enough to be collected.",
+        "operationId": "generateTransactionFromNumber",
+        "parameters": [
+          {
+            "name": "numberOfTransactionsToGenerate",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "./schemas-openapi/dashboard/transaction/CollectedTransactionDashboard.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/simulation/transaction/run/collectable": {
+      "post": {
+        "summary": "POST simulation/transaction/run/collectable",
+        "operationId": "runSimulation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CollectedTransaction"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "description": "Simulation time + output of mapping '/transaction/collect'"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WARNING: all the responses are wrapped using this method :": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "interactionResponse": {
+            "type": "object",
+            "properties": {
+              "requestId": {
+                "type": "string"
+              },
+              "requestName": {
+                "type": "string"
+              },
+              "requestDescription": {
+                "type": "string"
+              },
+
+              "data": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "description": "Mainly for describing that a process has properly finished - Or to describe the source of an error"
+                  },
+                  {
+                    "type": "object",
+                    "description": "Main return type - this where the DTOs are transmitted"
+                  },
+                  {
+                    "type": "array",
+                    "description": "Like the other one, but when multiple DTOs are transmitted"
+                  }
+                ]
+              }
+            },
+            "required": ["requestId", "requestName", "requestDescription", "data"]
+          }
+        },
+        "required": ["status", "message", "timestamp", "interactionResponse"]
+      },
+      "UserRegistrationForm": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "phoneNumber": {
+            "type": "string"
+          }
+        }
+      },
+      "UserLoginForm": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "PreFilledBankAccount": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bankAccountType": {
+            "type": "string",
+            "enum": [
+              "YOUTH_PASSBOOK",
+              "SAVING_ACCOUNT",
+              "CURRENT_ACCOUNT",
+              "ATM_ACCOUNT"
+            ]
+          }
+        },
+        "required": ["amount", "bankAccountType"]
+      },
+      "PreFilledCardInformation": {
+        "type": "object",
+        "properties": {
+          "expirationDateInYears": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "upperLimitPerMonth": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "upperLimitPerTransaction": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "required": ["expirationDateInYears", "upperLimitPerMonth", "upperLimitPerTransaction"]
+      },
+      "PreFilledBeneficiary": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "iban": {
+            "type": "string"
+          }
+        }
+      },
+      "UserCredentialUpdate": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": [
+              "ROLE_CLIENT",
+              "ROLE_BANKER",
+              "ROLE_ACCOUNTANT",
+              "ROLE_SIMULATOR",
+              "ROLE_TRANSACTION_COLLECTOR",
+              "ROLE_MASTER",
+              "ROLE_ATM"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "AUTHORIZED",
+              "UNAUTHORIZED"
+            ]
+          }
+        }
+      },
+      "CollectedTransaction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accountingDirection": {
+            "type": "string",
+            "enum": [
+              "DEBIT",
+              "CREDIT"
+            ]
+          },
+          "transactionType": {
+            "type": "string",
+            "enum": [
+              "CREDIT_CARD",
+              "DEBIT_CARD",
+              "DEPOSIT",
+              "TRANSFER",
+              "MOBILE_PAYMENT",
+              "CHEQUE"
+            ]
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currency": {
+            "type": "string",
+            "enum": [
+              "EUR",
+              "CNY",
+              "USD",
+              "GBP"
+            ]
+          },
+          "transactionActor": {
+            "type": "string"
+          },
+          "transactionDate": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+

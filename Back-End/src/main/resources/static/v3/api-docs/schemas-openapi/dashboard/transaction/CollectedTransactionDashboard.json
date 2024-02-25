@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "transactionDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "transactionType": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "integer"
+    },
+    "accountingDirection": {
+      "type": "string",
+      "enum": ["DEBIT", "CREDIT"]
+    },
+    "transactionActor": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    }
+  },
+  "required": ["transactionDate", "currency", "transactionType", "amount", "accountingDirection", "transactionActor", "id"]
+}

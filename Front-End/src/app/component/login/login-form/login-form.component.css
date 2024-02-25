@@ -1,0 +1,41 @@
+.small-screen-form {
+    width: 70%
+}
+
+input {
+    border: solid 1px var(--ensiblue);
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.information > div {
+    width: 100%;
+}
+
+input {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#email-input {
+    transition: border 300ms
+}
+
+#password-input {
+    transition: border 300ms
+}
+
+#email-missing {
+    transition: opacity 300ms;
+}
+
+#password-error {
+    transition: opacity 300ms;
+}

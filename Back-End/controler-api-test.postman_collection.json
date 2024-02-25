@@ -1,0 +1,771 @@
+{
+	"info": {
+		"_postman_id": "79a6ed0f-56b9-4474-a949-e7930b9ff3ed",
+		"name": "controler-api-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27073753",
+		"_collection_link": "https://lunar-water-206152.postman.co/workspace/Back-End-e-banking---API-test~aa876d45-be84-4084-b6ce-4f960cfb702c/collection/27073753-79a6ed0f-56b9-4474-a949-e7930b9ff3ed?action=share&source=collection_link&creator=27073753"
+	},
+	"item": [
+		{
+			"name": "register controller",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Fire\",\n    \"lastName\": \"John\",\n    \"gender\": 1,\n    \"email\": \"john@fire.com\",\n    \"password\": \"Fireisnothotenough123-\",\n    \"phoneNumber\": \"+33744444444\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/register"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login controller",
+			"item": [
+				{
+					"name": "login-master",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"master@ensibank.pro.fr\",\r\n    \"password\": \"--> master <-- : c8765'eeacKJGBDJHK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/login"
+					},
+					"response": []
+				},
+				{
+					"name": "login-simulator",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"henry.simulate@ensibank.pro.fr\",\r\n    \"password\": \"MLG pro simulator 2024 -fezec_e(fqsef)\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/login"
+					},
+					"response": []
+				},
+				{
+					"name": "login-transaction collector",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"front.end.collect@ensibank.pro.fr\",\r\n    \"password\": \"Post transaction collection - _ee&e_c8967964\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/login"
+					},
+					"response": []
+				},
+				{
+					"name": "login-banker",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"alexandrie.king@ensibank.pro.fr\",\r\n    \"password\": \"alexandrie - alexandra: c_e&e'kjFDQdf5324abzkd&c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/login"
+					},
+					"response": []
+				},
+				{
+					"name": "login-accountant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ceasar.emperor@ensibank.pro.fr\",\r\n    \"password\": \"veni-vidi-vici : _c67V0-bera_Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/login"
+					},
+					"response": []
+				},
+				{
+					"name": "login-client authorized babylon",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"babylon@gmail.com\",\r\n    \"password\": \"BabyBo68-/;22\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/login"
+					},
+					"response": []
+				},
+				{
+					"name": "login-client authorized babylon junior",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"babylon.junior@gmail.com\",\r\n    \"password\": \"BabyBo68-/;22 - but junior\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/login"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"// Récupère la valeur de l'en-tête Authorization",
+							"const accessToken = pm.response.headers.get(\"token\");",
+							"",
+							"// Vérifie si l'en-tête Authorization existe",
+							"pm.test(\"Vérification de l'en-tête Authorization\", function() {",
+							"    pm.expect(accessToken).to.exist;",
+							"});",
+							"",
+							"// Enregistre la valeur dans une variable de collection",
+							"pm.collectionVariables.set(\"accessToken\", accessToken);",
+							"",
+							"// Test de vérification",
+							"pm.test(\"Vérification de la donnée\", function() {",
+							"    pm.expect(accessToken).to.exist; // Vérifie que accessToken existe",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "transaction collection controller",
+			"item": [
+				{
+					"name": "wrong identifier - IBAN does not respect ISO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": 0,\r\n    \"transactionActor\": \"FR1420041010050500013M02606\",\r\n    \"type\": \"DEBIT_CARD\",\r\n    \"amount\": 1000,\r\n    \"currency\": \"EUR\",\r\n    \"transactionDate\": \"2024-01-03 15:03:48.617\",\r\n    \"accountingDirection\": \"DEBIT\"\r\n  },\r\n  {\r\n    \"id\": 1,\r\n    \"transactionActor\": \"4532015112830366\",\r\n    \"type\": \"DEBIT_CARD\",\r\n    \"amount\": 1000,\r\n    \"currency\": \"EUR\",\r\n    \"transactionDate\": \"2024-01-03 15:03:48.617\",\r\n    \"accountingDirection\": \"CREDIT\"\r\n  },\r\n  {\r\n    \"id\": 2,\r\n    \"transactionActor\": \"FR1420041010050500013M02606\",\r\n    \"type\": \"TRANSFER\",\r\n    \"amount\": 2000,\r\n    \"currency\": \"USD\",\r\n    \"transactionDate\": \"2024-01-03 15:04:25.136\",\r\n    \"accountingDirection\": \"CREDIT\"\r\n  },\r\n  {\r\n    \"id\": 3,\r\n    \"transactionActor\": \"4532015112830366\",\r\n    \"type\": \"TRANSFER\",\r\n    \"amount\": 2000,\r\n    \"currency\": \"USD\",\r\n    \"transactionDate\": \"2024-01-03 15:04:25.136\",\r\n    \"accountingDirection\": \"DEBIT\"\r\n  }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/transaction/collect"
+					},
+					"response": []
+				},
+				{
+					"name": "wrong identiffier - schema unrespected",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": 0,\r\n    \"transactionActor\": \"FR1420041010050500013M02606\",\r\n    \"type\": \"DEBIT_CARD\",\r\n    \"amount\": 1000,\r\n    \"currency\": \"EUR\",\r\n    \"transactionDate\": \"2024-01-03 15:03:48.617\",\r\n    \"accountingDirection\": \"DEBIT\"\r\n  },\r\n  {\r\n    \"id\": 1,\r\n    \"transactionActor\": \"4532015112830366\",\r\n    \"type\": \"DEBIT_CARD\",\r\n    \"amount\": 1000,\r\n    \"currency\": \"EUR\",\r\n    \"transactionDate\": \"2024-01-03 15:03:48.617\",\r\n    \"accountingDirection\": \"CREDIT\"\r\n  },\r\n  {\r\n    //this one is wrong, missing 2 CHAR before IBAN\r\n    \"id\": 2,\r\n    \"transactionActor\": \"1420041010050500013M02606\",\r\n    \"type\": \"TRANSFER\",\r\n    \"amount\": 2000,\r\n    \"currency\": \"USD\",\r\n    \"transactionDate\": \"2024-01-03 15:04:25.136\",\r\n    \"accountingDirection\": \"CREDIT\"\r\n  },\r\n  {\r\n    \"id\": 3,\r\n    \"transactionActor\": \"4532015112830366\",\r\n    \"type\": \"TRANSFER\",\r\n    \"amount\": 2000,\r\n    \"currency\": \"USD\",\r\n    \"transactionDate\": \"2024-01-03 15:04:25.136\",\r\n    \"accountingDirection\": \"DEBIT\"\r\n  }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/transaction/collect"
+					},
+					"response": []
+				},
+				{
+					"name": "wrong 50/50 accounting direrction 1 DEBIT / 3 CREDIT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": 0,\r\n    \"transactionActor\": \"FR1420041010050500013M02606\",\r\n    \"type\": \"DEBIT_CARD\",\r\n    \"amount\": 1000,\r\n    \"currency\": \"EUR\",\r\n    \"transactionDate\": \"2024-01-03 15:03:48.617\",\r\n    \"accountingDirection\": \"DEBIT\"\r\n  },\r\n  {\r\n    \"id\": 1,\r\n    \"transactionActor\": \"4532015112830366\",\r\n    \"type\": \"DEBIT_CARD\",\r\n    \"amount\": 1000,\r\n    \"currency\": \"EUR\",\r\n    \"transactionDate\": \"2024-01-03 15:03:48.617\",\r\n    \"accountingDirection\": \"CREDIT\"\r\n  },\r\n  {\r\n    \"id\": 2,\r\n    \"transactionActor\": \"FR1420041010050500013M02606\",\r\n    \"type\": \"TRANSFER\",\r\n    \"amount\": 2000,\r\n    \"currency\": \"USD\",\r\n    \"transactionDate\": \"2024-01-03 15:04:25.136\",\r\n    \"accountingDirection\": \"CREDIT\"\r\n  },\r\n  //MISSING 2 other accounting direction (1 DEBIT vs 3 CREDIT -> missing 2 DEBIT)\r\n  {\r\n    \"id\": 3,\r\n    \"transactionActor\": \"4532015112830366\",\r\n    \"type\": \"TRANSFER\",\r\n    \"amount\": 2000,\r\n    \"currency\": \"USD\",\r\n    \"transactionDate\": \"2024-01-03 15:04:25.136\",\r\n    \"accountingDirection\": \"CREDIT\"\r\n  }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/transaction/collect"
+					},
+					"response": []
+				},
+				{
+					"name": "wrong 50/50 accounting direrction missing one correspondance (CREDIT != -DEBIT but card(CREDIT) == card(DEBIT))",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": 0,\r\n    \"transactionActor\": \"FR1420041010050500013M02606\",\r\n    \"type\": \"DEBIT_CARD\",\r\n    \"amount\": 1000,\r\n    \"currency\": \"EUR\",\r\n    \"transactionDate\": \"2024-01-03 15:03:48.617\",\r\n    \"accountingDirection\": \"DEBIT\"\r\n  },\r\n  {\r\n    \"id\": 1,\r\n    \"transactionActor\": \"4532015112830366\",\r\n    \"type\": \"DEBIT_CARD\",\r\n    \"amount\": 1000,\r\n    \"currency\": \"EUR\",\r\n    \"transactionDate\": \"2024-01-03 15:03:48.617\",\r\n    \"accountingDirection\": \"CREDIT\"\r\n  },\r\n  {\r\n    \"id\": 2,\r\n    \"transactionActor\": \"FR1420041010050500013M02606\",\r\n    \"type\": \"TRANSFER\",\r\n    \"amount\": 2000,\r\n    \"currency\": \"USD\",\r\n    \"transactionDate\": \"2024-01-03 15:04:25.136\",\r\n    \"accountingDirection\": \"CREDIT\"\r\n  },\r\n  {\r\n    \"id\": 3,\r\n    \"transactionActor\": \"4532015112830366\",\r\n    \"type\": \"TRANSFER\",\r\n    \"amount\": 2000,\r\n    \"currency\": \"USD\",\r\n    \"transactionDate\": \"2024-01-03 14:34:44.456\",\r\n    \"accountingDirection\": \"DEBIT\"\r\n  }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/transaction/collect"
+					},
+					"response": []
+				},
+				{
+					"name": "wrong number of accounting direction (3 transaction, not even)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": 0,\r\n    \"transactionActor\": \"FR1420041010050500013M02606\",\r\n    \"type\": \"DEBIT_CARD\",\r\n    \"amount\": 1000,\r\n    \"currency\": \"EUR\",\r\n    \"transactionDate\": \"2024-01-03 15:03:48.617\",\r\n    \"accountingDirection\": \"DEBIT\"\r\n  },\r\n  {\r\n    \"id\": 1,\r\n    \"transactionActor\": \"4532015112830366\",\r\n    \"type\": \"DEBIT_CARD\",\r\n    \"amount\": 1000,\r\n    \"currency\": \"EUR\",\r\n    \"transactionDate\": \"2024-01-03 15:03:48.617\",\r\n    \"accountingDirection\": \"CREDIT\"\r\n  },\r\n  {\r\n    \"id\": 3,\r\n    \"transactionActor\": \"4532015112830366\",\r\n    \"type\": \"TRANSFER\",\r\n    \"amount\": 2000,\r\n    \"currency\": \"USD\",\r\n    \"transactionDate\": \"2024-01-03 15:04:25.136\",\r\n    \"accountingDirection\": \"DEBIT\"\r\n  }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/transaction/collect"
+					},
+					"response": []
+				},
+				{
+					"name": "from-generator",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{generatedCollectableTransaction}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/transaction/collect"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "simulation",
+			"item": [
+				{
+					"name": "generate transaction controller",
+					"item": [
+						{
+							"name": "run simulation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Token",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{generatedCollectableTransaction}}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{boBaseUrl}}/simulation/transaction/run/collectable"
+							},
+							"response": []
+						},
+						{
+							"name": "generate",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Extract data field\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    var transactionData = JSON.stringify(jsonData.interactionResponse.data);\r",
+											"    pm.collectionVariables.set(\"generatedCollectableTransaction\", transactionData);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Token",
+										"value": "{{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": "{{boBaseUrl}}/simulation/transaction/generate/collectable/10"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "client controller",
+			"item": [
+				{
+					"name": "get dashboard",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": "{{boBaseUrl}}/client/dashboard"
+					},
+					"response": []
+				},
+				{
+					"name": "block card id 1",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{boBaseUrl}}/client/block/card/1",
+							"host": [
+								"{{boBaseUrl}}"
+							],
+							"path": [
+								"client",
+								"block",
+								"card",
+								"1"
+							],
+							"query": [
+								{
+									"key": "Token",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add beneficiary",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Wilfried\",\r\n    \"lastName\": \"Aubry\",\r\n    \"iban\": \"FR15200410100558X2YB7HRQN0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/client/add/beneficiary/3"
+					},
+					"response": []
+				},
+				{
+					"name": "add request cheque book",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": "{{boBaseUrl}}/client/add/request/chequebook/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "banker controller",
+			"item": [
+				{
+					"name": "dashboard",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": "{{boBaseUrl}}/banker/dashboard"
+					},
+					"response": []
+				},
+				{
+					"name": "block a user card",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": "{{boBaseUrl}}/banker/block/card/8/1"
+					},
+					"response": []
+				},
+				{
+					"name": "add bank account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 0,\r\n    \"bankAccountType\": \"CURRENT_ACCOUNT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/banker/add/bank/account/9"
+					},
+					"response": []
+				},
+				{
+					"name": "add request card",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"expirationDateInYears\": 4,\r\n    \"upperLimitPerMonth\": 1500000,\r\n    \"upperLimitPerTransaction\": 300000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/banker/add/request/card/8/3/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "accountant account",
+			"item": [
+				{
+					"name": "get dashboard",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": "{{boBaseUrl}}/accountant/dashboard/4/0"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user manager account",
+			"item": [
+				{
+					"name": "get dashboard",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": "{{boBaseUrl}}/user/manager/dashboard"
+					},
+					"response": []
+				},
+				{
+					"name": "update babylon junior credential",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"ROLE_CLIENT\",\r\n    \"status\": \"UNAUTHORIZED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/user/manager/credential/update/9"
+					},
+					"response": []
+				},
+				{
+					"name": "update john fire",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Token",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"ROLE_CLIENT\",\r\n    \"status\": \"AUTHORIZED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{boBaseUrl}}/user/manager/credential/update/10"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "boBaseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "accessToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "generatedCollectableTransaction",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

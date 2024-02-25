@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "idRequestCard": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "requestPaymentMethodStatus": {
+      "$ref": "./RequestPaymentMethodStatusDashboard.json"
+    }
+  },
+  "required": ["idRequestCard", "requestPaymentMethodStatus"]
+}

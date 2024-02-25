@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": {
+    "idRequestPaymentMethodManager": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "requestChequeBook": {
+      "$ref": "./RequestChequeBookDashboard.json"
+    },
+    "requestCard": {
+      "$ref": "./RequestCardBasicDashboard.json"
+    }
+  },
+  "required": ["idRequestPaymentMethodManager", "requestChequeBook", "requestCard"]
+}

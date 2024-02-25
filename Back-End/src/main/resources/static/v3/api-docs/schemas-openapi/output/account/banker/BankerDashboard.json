@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "clients": {
+      "type": "array",
+      "items": { "$ref": "./BankerClientsDashboard.json" }
+    },
+    "cardProducts": {
+      "type": "array",
+      "items": { "$ref": "../../../dashboard/card_product/CardProductDashboard.json" }
+    }
+  },
+  "required": ["clients", "cardProducts"]
+}

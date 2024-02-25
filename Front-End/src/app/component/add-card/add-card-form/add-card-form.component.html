@@ -1,0 +1,27 @@
+<form [formGroup]="addCardForm" (ngSubmit)="onSubmit()">
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <mat-form-field>
+            <mat-label> Card Products </mat-label>
+            <mat-select formControlName="idCardProductSelected">
+                @for (cardProduct of cardProducts; track cardProduct) {
+                    <mat-option [value]="cardProduct.id"> {{cardProduct.name}} </mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label> Expiration Date In Years </mat-label>
+            <input matInput placeholder="Please enter the date" formControlName="expirationDateInYears">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label> Upper Limit Per Month </mat-label>
+            <input matInput placeholder="Please enter the value" formControlName="upperLimitPerMonth">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label> Upper Limit Per Transaction </mat-label>
+            <input matInput placeholder="Please enter the value" formControlName="upperLimitPerTransaction">
+        </mat-form-field>
+    </div>
+</form>

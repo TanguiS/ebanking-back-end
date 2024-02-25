@@ -1,0 +1,18 @@
+.mat-mdc-button {
+    transition: background-color 300ms, color 300ms;
+}
+
+.mat-mdc-button:hover, .mat-mdc-button.active {
+    background: var(--mat-toolbar-container-text-color);
+    color: var(--mat-toolbar-container-background-color);
+}
+
+.mat-mdc-raised-button {
+    transition: background-color 300ms, color 300ms;
+}
+
+.mat-mdc-raised-button:hover, .mat-mdc-raised-button.active {
+    background: var(--mdc-protected-button-label-text-color);
+    color: var(--mdc-protected-button-container-color);
+    transition: background-color 300ms, color 300ms;
+}

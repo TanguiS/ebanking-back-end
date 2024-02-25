@@ -1,0 +1,55 @@
+{
+  "type": "object",
+  "properties": {
+    "authorizedClients": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../dashboard/user/information/UserInformationManagerDashboard.json"
+      }
+    },
+    "authorizedBankPersonals": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../dashboard/user/information/UserInformationManagerDashboard.json"
+      }
+    },
+    "blockedUsers": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../dashboard/user/information/UserInformationManagerDashboard.json"
+      }
+    },
+    "pendingUsers": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../dashboard/user/information/UserInformationManagerDashboard.json"
+      }
+    },
+    "availableRoles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "ROLE_CLIENT",
+          "ROLE_BANKER",
+          "ROLE_ACCOUNTANT",
+          "ROLE_SIMULATOR",
+          "ROLE_TRANSACTION_COLLECTOR",
+          "ROLE_MASTER",
+          "ROLE_ATM"
+        ]
+      }
+    },
+    "availableStatus": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "PENDING",
+          "AUTHORIZED",
+          "UNAUTHORIZED"
+        ]
+      }
+    }
+  }
+}

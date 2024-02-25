@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "properties": {
+    "idTransaction": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "amount": {
+      "type": "number",
+      "format": "double"
+    },
+    "transactionDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "transactionType": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "accountingDirection": {
+      "type": "string"
+    },
+    "transactionStatus": {
+      "type": "string"
+    }
+  },
+  "required": ["idTransaction", "amount", "transactionDate", "transactionType", "currency", "accountingDirection", "transactionStatus"]
+}

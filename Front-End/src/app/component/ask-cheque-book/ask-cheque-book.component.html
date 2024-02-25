@@ -1,0 +1,5 @@
+<div [matTooltip]="isButtonDisabled ? 'You have already ask for a cheque book' : ''">
+    <button mat-raised-button color="primary" (click)="onClick()" [disabled]="isButtonDisabled">
+        Ask Cheque Book
+    </button>
+</div>

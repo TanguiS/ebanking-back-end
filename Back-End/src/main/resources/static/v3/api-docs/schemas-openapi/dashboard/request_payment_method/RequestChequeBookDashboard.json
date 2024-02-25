@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "idRequestChequeBook": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "requestPaymentMethodStatus": {
+      "$ref": "./RequestPaymentMethodStatusDashboard.json"
+    }
+  },
+  "required": ["idRequestChequeBook", "requestPaymentMethodStatus"]
+}

@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row class="mat-elevation-z6">
+        <div class="spacer" *ngIf="isSmallScreen()"></div>
+        <div class="title" #titleContainer>
+            <mat-icon svgIcon="ensicaen-logo"></mat-icon>
+            <span *ngIf="!isUserLoggedIn()">Welcome to ENSIBANK</span>
+            <span *ngIf="isUserLoggedIn()">Welcome to ENSIBANK, {{this._firstName}} {{this._lastName}}</span>
+        </div>
+        <div id="spacer-first-row" class="spacer" #spacerLarge></div>
+        <div *ngIf="!isSmallScreen()" #buttonsContainer>
+            <app-navigation-buttons-list id="navigation-buttons-container-large"></app-navigation-buttons-list>
+        </div>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="mat-elevation-z3" *ngIf="isSmallScreen()">
+        <app-navigation-buttons-list id="navigation-buttons-container-small"></app-navigation-buttons-list>
+    </mat-toolbar-row>
+</mat-toolbar>

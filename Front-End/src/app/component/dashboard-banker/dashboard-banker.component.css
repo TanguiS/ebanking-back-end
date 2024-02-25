@@ -1,0 +1,4 @@
+.mat-mdc-row:hover .mat-mdc-cell {
+    cursor: pointer;
+    opacity: 0.33;
+}

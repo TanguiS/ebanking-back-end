@@ -1,0 +1,319 @@
+<mat-table #GeneralAccountInformationTable [dataSource]="[accountInformation]" class="mat-elevation-z8">
+    <ng-container matColumnDef="Account Type1">
+        <mat-header-cell *matHeaderCellDef>Account Type</mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.bankAccountType}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Amount1">
+        <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item.amount/100 |
+            currency:"EUR":"symbol":this.amountFormat }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="IBAN1">
+        <mat-header-cell *matHeaderCellDef> IBAN </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.iban}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="RIB1">
+        <mat-header-cell *matHeaderCellDef> RIB</mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.rib}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="commandChequeBook" *ngIf="!this.idClient">
+        <mat-header-cell *matHeaderCellDef> Order Cheque Book </mat-header-cell>
+        <mat-cell *matCellDef>
+            <app-ask-cheque-book (eventAskChequeBook)="refreshTable($event)" [idBankAccount]="this.accountId" [isButtonDisabled]="this.isChequeBookRequested"></app-ask-cheque-book>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="accountColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: accountColumns;"></mat-row>
+
+</mat-table>
+
+
+<mat-accordion class="example-headers-align">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Debit Mandate
+            </mat-panel-title>
+            <mat-panel-description>
+                There is/are {{this.debitMandateList.length}} debit mandate(s)
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-table [dataSource]="debitMandateList" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="DebitMandateEntity">
+                <mat-header-cell *matHeaderCellDef>Entity</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    {{element.directDebit.individual ? "Individual" : "Legal Entity"}}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="DebitMandateEntityName">
+                <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    {{element.directDebit.individual ? element.directDebit.individual.firstName + " " + element.directDebit.individual.lastName : element.directDebit.legalEntity.name}}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="DebitMandateEntityRecurrence">
+                <mat-header-cell *matHeaderCellDef>Recurrence</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    {{element.directDebit.recurrence.replace("_", " ").toLowerCase()}}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['DebitMandateEntity', 'DebitMandateEntityName', 'DebitMandateEntityRecurrence']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['DebitMandateEntity', 'DebitMandateEntityName', 'DebitMandateEntityRecurrence'];"></mat-row>
+        </mat-table>
+
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Beneficiaries
+            </mat-panel-title>
+            <mat-panel-description>
+                There is/are {{this.beneficiariesList.length}} beneficiary/ies.
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-table #BeneficiaryInformationTable [dataSource]="beneficiariesList" class="mat-elevation-z8">
+            <ng-container matColumnDef="FirstNameBeneficiary">
+                <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.beneficiary.firstName}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="LastNameBeneficiary">
+                <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.beneficiary.lastName}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="['FirstNameBeneficiary', 'LastNameBeneficiary']"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: ['FirstNameBeneficiary', 'LastNameBeneficiary'];"></mat-row>
+        </mat-table>
+        <section id ='add-beneficiary-button' *ngIf="!isUserABanker()">
+            <app-beneficiary-popup-button
+                [idCurrentBankAccount]="accountId"
+                (eventBeneficiaryAdded)="this.refreshTable($event)"></app-beneficiary-popup-button>
+        </section>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Card
+            </mat-panel-title>
+            <mat-panel-description>
+                There is/are {{this.paymentMethodList.length}} payment method(s).
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-table #CardInformationTable [dataSource]="paymentMethodList" class="mat-elevation-z8">
+            <ng-container matColumnDef="CardPAN">
+                <mat-header-cell *matHeaderCellDef>PAN</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.card.cardInformation.pan}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="CardStatus">
+                <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.card.cardStatus}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Temp">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <app-block-card-user
+                        [idCard]="element.card.idCard"
+                        [idClient]="idClient"
+                        *ngIf="this.canCardBeBlocked(element.card.cardStatus)"
+                        (eventCardBlocked)="this.refreshTable($event)"></app-block-card-user>
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="['CardPAN', 'CardStatus','Temp']"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: ['CardPAN', 'CardStatus','Temp'];"></mat-row>
+        </mat-table>
+
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Payment Method Request
+            </mat-panel-title>
+            <mat-panel-description>
+                There is/are {{this.paymentMethodRequestList.length}} payment method request(s).
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-table [dataSource]="paymentMethodRequestList" class="mat-elevation-z8" >
+            <ng-container matColumnDef="PaymentMethod">
+                <mat-header-cell *matHeaderCellDef>Payment Method</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    {{element.requestCard ? "Card" : "Check Book"}}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="PaymentMethodOrderStatus">
+                <mat-header-cell *matHeaderCellDef>Order Status</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    {{element.requestCard ?
+                    element.requestCard.requestPaymentMethodStatus.orderStatus.replace('_', ' ') :
+                    element.requestChequeBook.requestPaymentMethodStatus.orderStatus.replace('_', ' ') }}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="UserRequestPaymentMethod">
+                <mat-header-cell *matHeaderCellDef>Your Request</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    {{
+                        (element.requestCard?.requestPaymentMethodStatus?.userRequestPaymentMethodDate
+                            || element.requestChequeBook?.requestPaymentMethodStatus?.userRequestPaymentMethodDate)
+                            ? (
+                                (element.requestCard?.requestPaymentMethodStatus?.userRequestPaymentMethodDate
+                                    || element.requestChequeBook?.requestPaymentMethodStatus?.userRequestPaymentMethodDate)
+                                    | date: 'yyyy-MM-dd'
+                            )
+                            : 'no data'
+                    }}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="BlankRequestPaymentMethod">
+                <mat-header-cell *matHeaderCellDef>Bank Request</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    {{
+                        (element.requestCard?.requestPaymentMethodStatus?.userRequestPaymentMethodDate
+                            || element.requestChequeBook?.requestPaymentMethodStatus?.userRequestPaymentMethodDate)
+                            ? (
+                                (element.requestCard?.requestPaymentMethodStatus?.userRequestPaymentMethodDate
+                                    || element.requestChequeBook?.requestPaymentMethodStatus?.userRequestPaymentMethodDate)
+                                    | date: 'yyyy-MM-dd'
+                            )
+                            : 'no data'
+                    }}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="BankReceivePaymentMethod">
+            <mat-header-cell *matHeaderCellDef>Bank Receive</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                {{
+                    (element.requestCard?.requestPaymentMethodStatus?.bankReceivedPaymentMethod
+                        || element.requestChequeBook?.requestPaymentMethodStatus?.bankReceivedPaymentMethod)
+                        ? (
+                            (element.requestCard?.requestPaymentMethodStatus?.bankReceivedPaymentMethod
+                                || element.requestChequeBook?.requestPaymentMethodStatus?.bankReceivedPaymentMethod)
+                                | date: 'yyyy-MM-dd'
+                        )
+                        : 'no data'
+                }}
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="UserReceivePaymentMethod">
+                <mat-header-cell *matHeaderCellDef>User Receive</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    {{
+                        (element.requestCard?.requestPaymentMethodStatus?.userReceivedPaymentMethod
+                            || element.requestChequeBook?.requestPaymentMethodStatus?.userReceivedPaymentMethod)
+                            ? (
+                                (element.requestCard?.requestPaymentMethodStatus?.userReceivedPaymentMethod
+                                    || element.requestChequeBook?.requestPaymentMethodStatus?.userReceivedPaymentMethod)
+                                    | date: 'yyyy-MM-dd'
+                            )
+                            : 'no data'
+                    }}
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef=
+                                "['PaymentMethod', 'PaymentMethodOrderStatus','UserRequestPaymentMethod', 'BlankRequestPaymentMethod', 'BankReceivePaymentMethod', 'UserReceivePaymentMethod']"
+            ></mat-header-row>
+            <mat-row *matRowDef=
+                         "let row; columns: ['PaymentMethod', 'PaymentMethodOrderStatus','UserRequestPaymentMethod', 'BlankRequestPaymentMethod', 'BankReceivePaymentMethod', 'UserReceivePaymentMethod'];"
+            ></mat-row>
+        </mat-table>
+
+        <section id ='add-card-button' *ngIf="isUserABanker()">
+            <app-add-card-popup-button
+                [idClient]="idClient"
+                [idCurrentBankAccount]="accountId"
+                (eventCardAdded)="this.refreshTable($event)"></app-add-card-popup-button>
+        </section>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Transactions
+            </mat-panel-title>
+            <mat-panel-description>
+                There is/are {{this.transactionList.length}} transaction(s).
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-table id="transaction-table" [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="transactionDate">
+                <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.transaction.transactionDate | date: 'yyyy-MM-dd'}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="transactionType">
+                <mat-header-cell *matHeaderCellDef>The direction of the transaction</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.transaction.transactionType}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="transactionAmount">
+                <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.transaction.amount/100 |
+                currency:element.transaction.currency:"symbol":this.amountFormat }} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="transactionStatus">
+                <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.transaction.transactionStatus}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="transactionDirection">
+                <mat-header-cell *matHeaderCellDef>Direction Of The Transaction</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.transaction.accountingDirection}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="['transactionDate', 'transactionType', 'transactionAmount', 'transactionStatus', 'transactionDirection']"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: ['transactionDate', 'transactionType', 'transactionAmount', 'transactionStatus', 'transactionDirection'];"></mat-row>
+
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10]"
+                       showFirstLastButtons
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </mat-expansion-panel>
+
+
+</mat-accordion>

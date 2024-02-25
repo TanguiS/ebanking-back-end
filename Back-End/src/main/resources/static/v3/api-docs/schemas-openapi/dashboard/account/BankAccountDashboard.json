@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "properties": {
+    "idBankAccount": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "bankAccountType": {
+      "type": "string"
+    },
+    "rib": {
+      "type": "string"
+    },
+    "iban": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "beneficiaries": {
+      "type": "array",
+      "items": {
+        "$ref": "../beneficiary/BeneficiaryToBankAccountDashboard.json"
+      }
+    },
+    "paymentMethods": {
+      "type": "array",
+      "items": {
+        "$ref": "../payment_method/PaymentMethodManagerDashboard.json"
+      }
+    },
+    "paymentMethodRequests": {
+      "type": "array",
+      "items": {
+        "$ref": "../request_payment_method/RequestPaymentMethodManagerDashboard.json"
+      }
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "$ref": "../transaction/TransactionToBankAccountDashboard.json"
+      }
+    },
+    "directDebits": {
+      "type": "array",
+      "items": {
+        "$ref": "../direct_debit/DirectDebitToBankAccountDashboard.json"
+      }
+    }
+  },
+  "required": ["idBankAccount", "bankAccountType", "rib", "iban", "amount"]
+}

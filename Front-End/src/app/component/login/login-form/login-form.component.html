@@ -1,0 +1,34 @@
+<section>
+
+    <div id="global-message-container" class="form-element-container form-element-container-ok">
+        <p id="global-message" class="hidden-message global-success">
+            {{ globalMessage }}
+        </p>
+    </div>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" id="form-element">
+        <fieldset>
+            <legend>Please enter your information:</legend>
+            <div class="information">
+                <div id="email-container" class="form-element-container form-element-container-ok">
+                    <input (input)="hideGlobalMessage()" id="email-input" type="email" placeholder="Email address" formControlName="_email">
+                </div>
+                <div id="email-missing-container" class="form-element-container error-message-container hidden-message">
+                    <p id="email-missing" class="error">An email address is required</p>
+                </div>
+
+                <div id="password-container" class="form-element-container form-element-container-ok">
+                    <input mat-raised-button
+                           matTooltip="{{ passwordFormatDescription }}" (input)="hideGlobalMessage()" type="password" id="password-input" placeholder="Password" formControlName="_password">
+                </div>
+                <div id="password-error-container" class="form-element-container error-message-container hidden-message">
+                    <p id="password-error" class="error">{{ passwordMessage }}</p>
+                </div>
+
+            </div>
+        </fieldset>
+
+        <button id="submit-button" type="submit">Log In</button>
+    </form>
+
+</section>

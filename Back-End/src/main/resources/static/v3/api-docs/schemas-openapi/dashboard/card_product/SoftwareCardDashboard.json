@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "idSoftwareCard": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "cardScheme": {
+      "type": "string"
+    },
+    "priorityUseLevel": {
+      "type": "integer",
+      "format": "int32"
+    }
+  },
+  "required": ["idSoftwareCard", "cardScheme", "cardProduct", "priorityUseLevel"]
+}

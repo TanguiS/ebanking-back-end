@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "properties": {
+    "idCardProduct": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "cardType": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "numberOfContactlessTransactionBeforeAskingPin": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "contactlessUpperLimitPerTransaction": {
+      "type": "number",
+      "format": "double"
+    },
+    "softwareCards": {
+      "type": "array",
+      "items": {
+        "$ref": "./SoftwareCardDashboard.json"
+      }
+    },
+    "authorizationPolicies": {
+      "type": "array",
+      "items": {
+        "$ref": "./AuthorizationPolicyDashboard.json"
+      }
+    }
+  },
+  "required": ["idCardProduct", "cardType", "name", "numberOfContactlessTransactionBeforeAskingPin", "contactlessUpperLimitPerTransaction", "softwareCards", "authorizationPolicies"]
+}

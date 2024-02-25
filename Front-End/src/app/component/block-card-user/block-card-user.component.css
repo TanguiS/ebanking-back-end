@@ -1,0 +1,16 @@
+button {
+    padding: 10px;
+    border: solid 1px var(--delete_red);
+    background: var(--delete_red);
+    color: white;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 4px;
+    transition: color 300ms, background-color 300ms;
+}
+
+button:hover {
+    background-color: white;
+    color: var(--delete_red);
+    cursor: pointer;
+}

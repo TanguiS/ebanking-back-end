@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "client": { "$ref": "../../../dashboard/user/information/UserInformationBasicDashboard.json" },
+    "bankAccounts": {
+      "type": "array",
+      "items": {
+        "$ref": "../../../dashboard/account/BankAccountDashboard.json"
+      }
+    }
+  },
+  "required": ["client", "bankAccounts"]
+}

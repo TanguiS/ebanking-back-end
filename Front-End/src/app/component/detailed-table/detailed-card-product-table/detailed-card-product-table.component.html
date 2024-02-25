@@ -1,0 +1,97 @@
+<app-page-title [isMainComponent]="isMainComponent" [title]="title"></app-page-title>
+
+<app-card-products-table [isMainComponent]="false" [cardProducts]="[cardProduct!]" [clickable]="false" #cardProductTable></app-card-products-table>
+
+<mat-accordion class="example-headers-align" multi="">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Softwares
+            </mat-panel-title>
+            <mat-panel-description>
+                There is/are {{this.softwaresCard.length}} software(s).
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-table [dataSource]="softwaresCard" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef style="flex-basis: 10%;"> Id </mat-header-cell>
+                <mat-cell *matCellDef="let element" style="flex-basis: 10%;"> {{element.idSoftwareCard}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="cardScheme">
+                <mat-header-cell *matHeaderCellDef style="flex-basis: 10%;"> Type </mat-header-cell>
+                <mat-cell *matCellDef="let element" style="flex-basis: 10%;"> {{element.cardScheme}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="priorityUseLevel">
+                <mat-header-cell *matHeaderCellDef style="flex-basis: 10%;"> Priority Use Level </mat-header-cell>
+                <mat-cell *matCellDef="let element" style="flex-basis: 10%;"> {{element.priorityUseLevel}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="softwaresColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: softwaresColumns;"></mat-row>
+        </mat-table>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Authorization Policy
+            </mat-panel-title>
+            <mat-panel-description>
+                There is/are {{this.authorizationPolicies.length}} authorization policy/ies.
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-table [dataSource]="authorizationPolicies" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <mat-header-cell class="authorizationRow" *matHeaderCellDef style="flex-basis: 10%;"> Id </mat-header-cell>
+                <mat-cell class="authorizationRow" *matCellDef="let element" style="flex-basis: 10%;"> {{element.idAuthorizationPolicy}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+                <mat-header-cell class="authorizationRow" *matHeaderCellDef style="flex-basis: 10%;"> Type </mat-header-cell>
+                <mat-cell class="authorizationRow" *matCellDef="let element" style="flex-basis: 10%;"> {{element.authorizationType}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="priorityUseLevel">
+                <mat-header-cell class="authorizationRow" *matHeaderCellDef style="flex-basis: 10%;"> Priority Use Level </mat-header-cell>
+                <mat-cell class="authorizationRow" *matCellDef="let element" style="flex-basis: 10%;"> {{element.priorityUseLevel}} </mat-cell>
+                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="requirement">
+                <mat-header-cell class="authorizationRow" *matHeaderCellDef > Requirement </mat-header-cell>
+                <mat-cell class="authorizationRow" *matCellDef="let element" >
+                    <mat-list>
+                        <mat-list-item *ngIf="element.requirement.cumulativeTotalTransactionAmountLimit">
+                            Cumulative total transaction amount: {{element.requirement.cumulativeTotalTransactionAmountLimit/100 |
+                            currency:"EUR":"symbol":this.amountFormat }}
+                        </mat-list-item>
+                        <mat-list-item *ngIf="element.requirement.cumulativeTotalTransactionAmountUpperLimit">
+                            Cumulative total transaction amount upper: {{element.requirement.cumulativeTotalTransactionAmountUpperLimit/100 |
+                            currency:"EUR":"symbol":this.amountFormat }}
+                        </mat-list-item>
+                        <mat-list-item *ngIf="element.requirement.upperConsecutiveOfflineLimit">
+                            Upper consecutive offline: {{element.requirement.upperConsecutiveOfflineLimit}}
+                        </mat-list-item>
+                        <mat-list-item *ngIf="element.requirement.lowerConsecutiveOfflineLimit">
+                            Lower consecutive offline: {{element.requirement.lowerConsecutiveOfflineLimit}}
+                        </mat-list-item>
+                    </mat-list>
+                </mat-cell>
+                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+            </ng-container>
+
+            <mat-header-row class="authorizationRow" *matHeaderRowDef="authorizationPoliciesColumns"></mat-header-row>
+            <mat-row class="authorizationRow" *matRowDef="let row; columns: authorizationPoliciesColumns;"></mat-row>
+        </mat-table>
+    </mat-expansion-panel>
+
+</mat-accordion>

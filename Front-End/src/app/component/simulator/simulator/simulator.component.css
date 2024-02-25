@@ -1,0 +1,12 @@
+h1 {
+    text-align: center;
+}
+
+.title {
+    margin-top: 30px;
+    color: var(--ensiblue);
+}
+
+.parameter-button {
+    margin: 20px;
+}

@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "idUser": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "role": {
+      "$ref": "../UserRoleDashboard.json"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    }
+  },
+  "required": ["idUser", "email", "role", "lastName", "firstName"]
+}

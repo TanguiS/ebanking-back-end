@@ -1,0 +1,36 @@
+<app-page-title [isMainComponent]="isMainComponent" [title]="title"></app-page-title>
+<mat-table #clientInformationTable [dataSource]="[clientInformation]" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.idUser}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item.firstName  }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+        <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{ item.lastName }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="phoneNumber">
+        <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.phoneNumber}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.email}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="clientInformationColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: clientInformationColumns;"></mat-row>
+</mat-table>
+
+<mat-divider></mat-divider>
+
+<app-bank-accounts-table
+    [isMainComponent]="false"
+    [idClient]="idClient"></app-bank-accounts-table>

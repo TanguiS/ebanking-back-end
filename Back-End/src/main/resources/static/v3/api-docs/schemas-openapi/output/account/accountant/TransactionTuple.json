@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+    "debtor": {
+      "$ref": "../../../dashboard/transaction/TransactionAccountantDashboard.json"
+    },
+    "creditor": {
+      "$ref": "../../../dashboard/transaction/TransactionAccountantDashboard.json"
+    }
+  },
+  "required": ["debtor", "creditor"]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "idDirectDebitToBankAccount": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "directDebit": {
+      "$ref": "./DirectDebitDashboard.json"
+    }
+  },
+  "required": ["idDirectDebitToBankAccount", "directDebit"]
+}
