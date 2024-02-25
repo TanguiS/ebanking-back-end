@@ -1,0 +1,29 @@
+version: '3'
+services:
+  database:
+    container_name: postgres
+    build:
+      context: Back-End/docker/db_alpine
+      dockerfile: Back-End/docker/db_alpine/Dockerfile
+    image: postgres
+    environment:
+      - POSTGRES_USER=master
+      - POSTGRES_DB=e-banking-back-end
+      - POSTGRES_PASSWORD=master
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./Back-End/script-sql:/docker-entrypoint-initdb.d
+  api:
+    depends_on:
+      - database
+    build:
+      context: Back-End/docker/api
+      dockerfile: Dockerfile
+    image: jar
+    ports :
+      - "8080:8079"
+    environment:
+      - POSTGRES_USER=master
+      - POSTGRES_DB=e-banking-back-end
+      - POSTGRES_PASSWORD=master
